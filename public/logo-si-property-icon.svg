@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="goldShine" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffd56b" />
+      <stop offset="45%" stop-color="#e5af25" />
+      <stop offset="100%" stop-color="#ba8212" />
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(0, 8)">
+    <!-- Roof gable: Left slope connected, Right slope angled -->
+    <!-- Gable Peak & Left Wall & Middle S Shelf -->
+    <!-- Path combining Roof Gable down to Left Wall and Middle horizontal crossbar of S -->
+    <path 
+      d="M200 42 
+         L325 148 
+         L294 174 
+         L200 96 
+         L109 174 
+         V262 
+         H265 
+         V228 
+         H109 
+         V174 
+         Z" 
+      fill="url(#goldShine)"
+      style="display:none;" 
+    />
+
+    <!-- Accurate geometric paths for SI Property Monogram -->
+    <!-- 1. The Gable Roof -->
+    <!-- Left slope goes into the left wall, right slope extends to the outer right edge -->
+    <path 
+      d="M 200 40 
+         L 326 148 
+         L 294 174 
+         L 200 96 
+         L 110 174 
+         L 76 148 
+         Z" 
+      fill="url(#goldShine)" 
+    />
+
+    <!-- 2. Upper Left Wall & Middle Bar of S -->
+    <path 
+      d="M 76 148 
+         H 110 
+         V 228 
+         H 265 
+         V 262 
+         H 76 
+         Z" 
+      fill="url(#goldShine)" 
+    />
+
+    <!-- 3. Bottom Base of S with Left Stub -->
+    <path 
+      d="M 76 295 
+         H 110 
+         V 320 
+         H 265 
+         V 354 
+         H 76 
+         Z" 
+      fill="url(#goldShine)" 
+    />
+
+    <!-- 4. Right 'I' Pillar with angled top parallel to roof slope -->
+    <path 
+      d="M 292 195 
+         L 326 167 
+         V 354 
+         H 292 
+         Z" 
+      fill="url(#goldShine)" 
+    />
+
+    <!-- 5. Four-Pane Window in Gable (Golden Panes) -->
+    <rect x="171" y="146" width="25" height="25" rx="1.5" fill="url(#goldShine)" />
+    <rect x="204" y="146" width="25" height="25" rx="1.5" fill="url(#goldShine)" />
+    <rect x="171" y="179" width="25" height="25" rx="1.5" fill="url(#goldShine)" />
+    <rect x="204" y="179" width="25" height="25" rx="1.5" fill="url(#goldShine)" />
+  </g>
+</svg>

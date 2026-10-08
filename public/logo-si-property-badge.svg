@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="badgeGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffd56b" />
+      <stop offset="45%" stop-color="#e5af25" />
+      <stop offset="100%" stop-color="#ba8212" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background deep spruce green exactly matching uploaded logo -->
+  <rect width="600" height="600" fill="#0e483e" />
+
+  <!-- Group for Central Emblem -->
+  <g transform="translate(100, 25)">
+    <!-- 1. The Gable Roof -->
+    <path 
+      d="M 200 40 
+         L 326 148 
+         L 294 174 
+         L 200 96 
+         L 110 174 
+         L 76 148 
+         Z" 
+      fill="url(#badgeGold)" 
+    />
+
+    <!-- 2. Upper Left Wall & Middle Bar of S -->
+    <path 
+      d="M 76 148 
+         H 110 
+         V 228 
+         H 265 
+         V 262 
+         H 76 
+         Z" 
+      fill="url(#badgeGold)" 
+    />
+
+    <!-- 3. Bottom Base of S with Left Stub -->
+    <path 
+      d="M 76 295 
+         H 110 
+         V 320 
+         H 265 
+         V 354 
+         H 76 
+         Z" 
+      fill="url(#badgeGold)" 
+    />
+
+    <!-- 4. Right 'I' Pillar with angled top parallel to roof slope -->
+    <path 
+      d="M 292 195 
+         L 326 167 
+         V 354 
+         H 292 
+         Z" 
+      fill="url(#badgeGold)" 
+    />
+
+    <!-- 5. Four-Pane Window in Gable -->
+    <rect x="171" y="146" width="25" height="25" rx="1.5" fill="url(#badgeGold)" />
+    <rect x="204" y="146" width="25" height="25" rx="1.5" fill="url(#badgeGold)" />
+    <rect x="171" y="179" width="25" height="25" rx="1.5" fill="url(#badgeGold)" />
+    <rect x="204" y="179" width="25" height="25" rx="1.5" fill="url(#badgeGold)" />
+  </g>
+
+  <!-- Typography -->
+  <text 
+    x="300" 
+    y="460" 
+    text-anchor="middle" 
+    font-family="'Montserrat', 'Inter', -apple-system, sans-serif" 
+    font-size="44" 
+    font-weight="800" 
+    letter-spacing="4" 
+    fill="url(#badgeGold)">
+    SI PROPERTY
+  </text>
+
+  <text 
+    x="300" 
+    y="508" 
+    text-anchor="middle" 
+    font-family="'Montserrat', 'Inter', -apple-system, sans-serif" 
+    font-size="20" 
+    font-weight="400" 
+    letter-spacing="0.5" 
+    fill="#ffffff">
+    Chuyên tâm - Chuyên nghiệp - Chuyên sâu
+  </text>
+</svg>

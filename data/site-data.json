@@ -1,0 +1,360 @@
+{
+  "pageHeaders": {
+    "projectsBadge": "Giỏ Hàng Chiến Lược • SI Property",
+    "newsTitle": "TIN TỨC, PHÂN TÍCH & BÁO CHÍ CHUYÊN ĐỀ",
+    "newsSubtitle": "Cập nhật kịp thời nhịp đập thị trường bất động sản, tiến độ hạ tầng giao thông và các nhận định khách quan từ báo chí chính thống.",
+    "advisorsTitle": "CHUYÊN VIÊN TƯ VẤN BẤT ĐỘNG SẢN CAO CẤP",
+    "advisorsSubtitle": "Mỗi chuyên viên tại SI Property là một cố vấn đầu tư am tường thị trường, được đào tạo chuẩn mực về thẩm định pháp lý và tận tâm bảo toàn giá trị cho khách hàng.",
+    "advisorsBadge": "Đội Ngũ Tinh Hoa • SI Property",
+    "projectsTitle": "DANH MỤC DỰ ÁN PHÂN PHỐI ĐỘC QUYỀN",
+    "projectsSubtitle": "Tuyển tập những siêu dự án ven biển và khu đô thị kiểu mẫu có pháp lý hoàn chỉnh 1/500, sở hữu tiềm năng sinh lời và thanh khoản vượt trội.",
+    "newsBadge": "Thông Tin Thị Trường & Báo Chí"
+  },
+  "advisors": [
+    {
+      "id": "adv-tran-minh-duc",
+      "name": "Lê Kiên Trung",
+      "title": "Giám Đốc Cấp Cao & Thành Viên Chiến Lược CĐT HODECO",
+      "phone": "0938 889 688",
+      "zalo": "0938889688",
+      "experience": "12 năm",
+      "email": "duc.tm@siproperty.vn",
+      "specialty": "The Light City, Blanca & Tư vấn danh mục đầu tư cao cấp",
+      "awards": "Top 1 Đại Sứ Bán Hàng HODECO, Chuyên Gia Tư Vấn Triệu Đô",
+      "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80",
+      "bio": "Với hơn một thập kỷ đồng hành cùng các chủ đầu tư danh tiếng như HODECO, anh Trần Minh Đức là người dẫn dắt tư duy thẩm định dự án khắt khe từ góc nhìn phát triển bền vững của SI Property.",
+      "isFeatured": true,
+      "order": 1
+    },
+    {
+      "zalo": "0909234567",
+      "isFeatured": false,
+      "name": "Nguyễn Hoàng Nam",
+      "experience": "8 năm",
+      "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80",
+      "phone": "0909 234 567",
+      "bio": "Chuyên gia hoạch định dòng tiền sinh lời bền vững cho khách hàng sở hữu biệt thự biển Vũng Tàu và căn hộ chuyên gia.",
+      "title": "Trưởng Phòng Kinh Doanh Dự Án Biển",
+      "order": 2,
+      "specialty": "Dinh thự Blanca & The Light City",
+      "email": "nam.nh@siproperty.vn",
+      "id": "adv-nguyen-hoang-nam",
+      "awards": "Chiến Binh Xuất Sắc HODECO 2024 - 2025"
+    },
+    {
+      "isFeatured": false,
+      "bio": "Tận tâm, thấu hiểu và kín đáo. Cung cấp báo cáo phân tích thị trường chuẩn xác từng micro-location cho nhà đầu tư cá nhân.",
+      "zalo": "0912345678",
+      "experience": "6 năm",
+      "name": "Lê Thảo My",
+      "specialty": "The Collection 688 & Green Skyline",
+      "phone": "0912 345 678",
+      "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80",
+      "order": 3,
+      "title": "Chuyên Viên Tư Vấn BĐS Cao Cấp (Private Wealth)",
+      "email": "my.lt@siproperty.vn",
+      "awards": "Top Doanh Số BĐS Triệu Đô Quý 1-2/2025",
+      "id": "adv-le-thao-my"
+    },
+    {
+      "order": 4,
+      "title": "Trưởng Nhóm Phân Tích & Thẩm Định Pháp Lý",
+      "experience": "9 năm",
+      "id": "adv-pham-quoc-tuan",
+      "isFeatured": false,
+      "email": "tuan.pq@siproperty.vn",
+      "bio": "Bảo vệ quyền lợi tối đa của khách hàng với quy trình kiểm soát hồ sơ pháp lý 3 tầng nghiêm ngặt trước khi phân phối.",
+      "specialty": "Pháp lý dự án, Legacy 66 & The Light City",
+      "name": "Phạm Quốc Tuấn",
+      "phone": "0988 776 554",
+      "image": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80",
+      "awards": "Cố vấn pháp lý xuất sắc hiệp hội môi giới",
+      "zalo": "0988776554"
+    }
+  ],
+  "updatedAt": "2026-09-17T17:15:16.495Z",
+  "contact": {
+    "email": "contact@siproperty.vn",
+    "hcmOfficeTitle": "Trụ sở Chiến Lược TP. Hồ Chí Minh",
+    "hotlineAlt": "1900 6886",
+    "vtOfficeAddress": "Trung tâm TP. Vũng Tàu, Tỉnh Bà Rịa - Vũng Tàu",
+    "faqs": [
+      {
+        "id": "faq-1",
+        "answer": "Là thành viên phân phối chiến lược cấp cao, nắm giữ giỏ hàng độc quyền, chính sách giá gốc và bảo lãnh pháp lý trực tiếp cho khách hàng.",
+        "question": "SI Property đóng vai trò gì với HODECO?"
+      },
+      {
+        "id": "faq-2",
+        "answer": "Chỉ cần để lại số điện thoại hoặc gọi hotline 0938.889.688. SI Property bố trí xe đưa đón VIP và chuyên viên phụ trách riêng.",
+        "question": "Làm sao để đặt lịch tour tham quan The Light City?"
+      }
+    ],
+    "hotline": "0938.889.688",
+    "vtOfficeTitle": "Văn Phòng Giao Dịch Vũng Tàu (HODECO Center)",
+    "hcmOfficeAddress": "Tòa nhà VP Hạng A, Trung tâm TP. Hồ Chí Minh",
+    "badge": "Kết Nối Với SI Property",
+    "subtitle": "Đội ngũ chuyên viên cao cấp của SI Property luôn sẵn sàng lắng nghe nhu cầu và xây dựng giải pháp phân bổ tài sản tối ưu nhất.",
+    "title": "LIÊN HỆ & ĐẶT LỊCH TƯ VẤN VIP"
+  },
+  "about": {
+    "subtitle": "Trở thành điểm tựa đầu tư thịnh vượng cho khách hàng thông qua năng lực thẩm định toàn diện từ quy hoạch, pháp lý tới biên độ tăng giá thực tế.",
+    "values": [
+      {
+        "title": "CHUYÊN TÂM",
+        "id": "val-1",
+        "desc": "Đặt lợi ích lâu dài và sự an toàn vốn của quý khách hàng lên trên hết. Phục vụ với sự thấu đáo và chữ Tâm trong từng giải pháp đề xuất."
+      },
+      {
+        "title": "CHUYÊN NGHIỆP",
+        "desc": "Quy trình tư vấn chuẩn chỉnh 5 sao, bảo mật thông tin tài sản cá nhân tuyệt đối và đồng hành pháp lý xuyên suốt vòng đời tài sản.",
+        "id": "val-2"
+      },
+      {
+        "title": "CHUYÊN SÂU",
+        "id": "val-3",
+        "desc": "Phân tích dữ liệu quy hoạch thực địa, am hiểu tường tận chính sách vĩ mô và nắm bắt sớm những lực đẩy hạ tầng ven biển."
+      }
+    ],
+    "quoteTitle": "“SI Property: Đồng hành kiến tạo giá trị chuẩn mực cùng đối tác chiến lược HODECO”",
+    "quoteText2": "Sự gắn kết mật thiết và trở thành Thành viên chiến lược của CĐT HODECO đã mở ra đặc quyền giỏ hàng độc quyền tại những dự án trọng điểm như The Light City Vũng Tàu, Blanca, Legacy 66, The Collection 688, Green Skyline... giúp SI Property luôn chủ động cung cấp thông tin chuẩn xác và chính sách ưu đãi vượt trội cho khách hàng.",
+    "sourceLabel": "Trích nguồn: Báo điện tử Bất động sản CafeLand (Bài viết số #149918)",
+    "title": "TÁI ĐỊNH HÌNH CHUẨN MỰC MÔI GIỚI BẤT ĐỘNG SẢN CAO CẤP",
+    "sourceUrl": "https://cafeland.vn/tin-tuc/si-property-tai-dinh-hinh-chuan-muc-moi-gioi-tu-tu-duy-nha-phat-trien-du-an-149918.html",
+    "badge": "Về Chúng Tôi • SI Property",
+    "quoteText1": "Trong bối cảnh thị trường bất động sản bước vào chu kỳ thanh lọc mạnh mẽ, người mua không còn dễ dãi với những lời hứa hẹn suông. Nhận thức rõ điều này, SI Property (siproperty.vn) được sáng lập với triết lý: Mỗi chuyên viên tư vấn phải am hiểu tường tận gốc rễ của khu đất, nguồn gốc dòng tiền, tiến độ giải phóng mặt bằng và giá trị sử dụng thực tế của cư dân."
+  },
+  "projects": [
+    {
+      "id": "the-light-city",
+      "features": [
+        "Hồ bơi vô cực",
+        "Hạ tầng đồng bộ ngầm hóa",
+        "Sổ đỏ từng nền",
+        "Công viên 5 ha"
+      ],
+      "scale": "27.2 ha | 490 căn giai đoạn 1",
+      "type": "Biệt thự, Nhà phố liên kế, Shophouse",
+      "tagline": "Khu Đô Thị Kiểu Mẫu Ven Biển Vũng Tàu",
+      "name": "The Light City",
+      "badge": "Dự án Tiêu điểm HODECO",
+      "description": "The Light City là kiệt tác bất động sản nghỉ dưỡng đô thị được quy hoạch bài bản bậc nhất Vũng Tàu với đầy đủ tiện ích: công viên Iris Central Park, clubhouse, trường học và đại lộ thương mại rực rỡ.",
+      "price": "Từ 4.5 - 18 Tỷ/căn",
+      "image": "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1200&q=80",
+      "location": "Phường 12, TP. Vũng Tàu, Bà Rịa - Vũng Tàu",
+      "status": "Đang mở bán quỹ căn độc quyền",
+      "developer": "HODECO (Đối tác Chiến lược)"
+    },
+    {
+      "badge": "Bộ Sưu Tập Giới Hạn",
+      "type": "Dinh thự Biển & Boutique Villa",
+      "name": "Blanca",
+      "tagline": "Kiến Trúc Địa Trung Hải Sang Trọng & Phóng Khoáng",
+      "status": "Nhận booking ưu tiên đợt 1",
+      "scale": "15 ha ven biển nguyên sơ",
+      "developer": "SI Property Phát triển & Phân Phối",
+      "features": [
+        "Bến du thuyền tư nhân",
+        "Hồ bơi muối khoáng",
+        "Private Lounge",
+        "Dịch vụ quản gia 24/7"
+      ],
+      "id": "blanca",
+      "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80",
+      "location": "Cung đường biển tỷ đô, Bà Rịa - Vũng Tàu",
+      "description": "Blanca mang hơi thở kiến trúc Địa Trung Hải với những vòm cong mềm mại, sắc trắng ngà tinh khôi và tầm nhìn panorama đón trọn bình minh trên biển nguyên sơ.",
+      "price": "Từ 8.2 Tỷ/căn"
+    },
+    {
+      "badge": "Thanh Khoản Tối Ưu",
+      "type": "Căn hộ chuyên gia & Shophouse",
+      "name": "Legacy 66",
+      "location": "Mặt tiền trung tâm công nghiệp công nghệ cao",
+      "developer": "Tập đoàn uy tín & Hợp tác SI Property",
+      "scale": "2 tòa tháp 29 tầng",
+      "features": [
+        "Hệ thống Smart Home",
+        "TTTM 3 tầng",
+        "Sky Garden trên đỉnh tháp",
+        "Bảo lãnh tài chính 70%"
+      ],
+      "id": "legacy-66",
+      "image": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80",
+      "description": "Legacy 66 mở ra giải pháp an cư và đầu tư khai thác dòng tiền cho thuê vượt trội đối với cộng đồng chuyên gia, quản lý cấp cao với mức giá hợp lý và pháp lý chuẩn mực.",
+      "tagline": "Chuẩn Mực Sống Hiện Đại - Tâm Điểm Kết Nối Phồn Vinh",
+      "status": "Sẵn sàng bàn giao, pháp lý hoàn chỉnh",
+      "price": "Từ 1.3 - 2.8 Tỷ/căn"
+    },
+    {
+      "location": "Trục giao thương chiến lược Đông Nam Bộ",
+      "tagline": "Bộ Sưu Tập Tư Dinh Dành Riêng Cho Giới Tinh Hoa",
+      "badge": "Ultra Luxury Exclusive",
+      "id": "the-collection-688",
+      "type": "Dinh thự sinh thái vườn",
+      "name": "The Collection 688",
+      "scale": "Chỉ giới hạn 68 sản phẩm",
+      "status": "Mở bán nội bộ theo lời mời (Invitation Only)",
+      "description": "Mỗi dinh thự tại The Collection 688 là một kiệt tác kiến trúc cá nhân hóa, hòa quyện thiên nhiên xanh mát cùng hệ an ninh đa lớp tuyệt mật cho chủ nhân thượng lưu.",
+      "features": [
+        "Hầm rượu tư nhân",
+        "An ninh đa lớp sinh trắc học",
+        "Sân golf mini",
+        "Hồ cá Koi cảnh quan"
+      ],
+      "developer": "SI Property & Đối tác Quốc tế",
+      "price": "Từ 22 Tỷ/dinh thự",
+      "image": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "badge": "Biểu Tượng Xanh 2026",
+      "type": "Căn hộ Dual-Key & Penthouse",
+      "name": "Green Skyline",
+      "developer": "Liên danh chiến lược SI Property",
+      "id": "green-skyline",
+      "features": [
+        "Vườn treo chân mây",
+        "Gym & Spa 5 sao",
+        "KidZone thông minh",
+        "Lọc khí tươi trung tâm"
+      ],
+      "status": "Giai đoạn Booking giữ chỗ đợt đầu",
+      "scale": "33 tầng nổi - 3 tầng hầm",
+      "location": "Trung tâm tài chính - du lịch đô thị biển",
+      "description": "Green Skyline tiên phong ứng dụng vật liệu bền vững, năng lượng tái tạo và thiết kế giếng trời đối lưu gió tự nhiên, nâng niu sức khỏe toàn diện cho gia đình.",
+      "tagline": "Tháp Căn Hộ Xanh Chuẩn ESG Đón Gió Biển",
+      "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
+      "price": "Từ 2.9 - 9.5 Tỷ/căn"
+    }
+  ],
+  "careers": {
+    "subtitle": "Chính sách hoa hồng cao nhất thị trường, chi trả minh bạch và quyền tiếp cận quỹ sản phẩm độc quyền từ CĐT HODECO.",
+    "badge": "Gia Nhập Đội Ngũ Tinh Hoa",
+    "benefits": [
+      {
+        "desc": "Quy trình thanh toán hoa hồng tốc độ, bảo đảm quyền lợi tài chính tuyệt đối cho từng giao dịch của chiến binh SI Property.",
+        "id": "ben-1",
+        "title": "Hoa Hồng Tới 65% - Chi Trả Trong 72h"
+      },
+      {
+        "desc": "Luôn nắm giữ những quỹ căn đẹp nhất tại The Light City Vũng Tàu, Blanca, Legacy 66 với mức giá gốc ưu đãi nhất.",
+        "title": "Giỏ Hàng Độc Quyền CĐT HODECO",
+        "id": "ben-2"
+      },
+      {
+        "title": "Đào Tạo Chuyên Sâu Đẳng Cấp",
+        "id": "ben-3",
+        "desc": "Được huấn luyện trực tiếp bởi ban lãnh đạo thâm niên, trang bị kiến thức thẩm định pháp lý và phục vụ khách hàng thượng lưu."
+      }
+    ],
+    "title": "CƠ HỘI BỨT PHÁ THU NHẬP CÙNG SI PROPERTY",
+    "jobs": [
+      {
+        "salary": "Lương cứng 15M - 35M + Hoa hồng tới 65% (Thu nhập 100M - 500M+)",
+        "location": "TP.HCM & Bà Rịa - Vũng Tàu",
+        "desc": "Tư vấn các dòng sản phẩm trọng điểm: Biệt thự, Dinh thự biển Blanca, Shophouse The Light City. Khách hàng nét được công ty phân bổ trực tiếp.",
+        "title": "Chuyên Viên Tư Vấn BĐS Cao Cấp (Senior Broker)",
+        "id": "job-1",
+        "department": "Khối Kinh Doanh & Phân Phối"
+      },
+      {
+        "id": "job-2",
+        "title": "Trưởng Phòng Kinh Doanh Dự Án HODECO",
+        "department": "Ban Quản Trị Kinh Doanh",
+        "salary": "Lương cứng 25M - 50M + Thưởng doanh số toàn phòng + ESOP",
+        "location": "TP. Vũng Tàu",
+        "desc": "Dẫn dắt đội ngũ 10-15 nhân sự phân phối độc quyền các dự án chiến lược. Yêu cầu 3+ năm kinh nghiệm quản lý đội nhóm BĐS cao cấp."
+      },
+      {
+        "title": "Chuyên Viên Digital Marketing & Growth Lead",
+        "id": "job-3",
+        "salary": "Lương 18M - 30M + KPI hiệu quả Lead",
+        "location": "TP.HCM",
+        "department": "Khối Marketing & Thương Hiệu",
+        "desc": "Lên chiến dịch chạy Performance Marketing đa kênh (Google, Meta, Zalo, Báo chí) cho các dự án bất động sản hàng hiệu ven biển."
+      }
+    ]
+  },
+  "general": {
+    "metric1Label": "Pháp Lý 1/500 Chuẩn Chỉnh",
+    "heroSubtitle": "SI Property kết hợp khắt khe giữa phân tích quy hoạch, năng lực thẩm định pháp lý và giỏ hàng bất động sản ven biển cao cấp, mang lại thịnh vượng bền vững cho nhà đầu tư tinh hoa.",
+    "metric4Value": "24/7",
+    "heroBadge": "Thành Viên Chiến Lược Của CĐT HODECO",
+    "heroTitle": "TÁI ĐỊNH HÌNH CHUẨN MỰC",
+    "homeNewsTitle": "TIN TỨC & GÓC NHÌN ĐẦU TƯ",
+    "metric3Label": "Hoa Hồng Tối Đa Trong 72h",
+    "footerHodecoTitle": "Hợp Tác HODECO",
+    "logoUrl": "/logo-si-property.svg",
+    "metric2Label": "Đại Dự Án Trọng Điểm",
+    "footerDescription": "Sàn Giao dịch Bất động sản Cao cấp - Thành viên chiến lược của CĐT HODECO. Tái định hình chuẩn mực môi giới với tư duy của nhà phát triển dự án.",
+    "metric2Value": "5+",
+    "footerCopyright": "© 2026 SI Property (siproperty.vn). Thành viên chiến lược CĐT HODECO.",
+    "siteTitle": "SI Property - Sàn Giao Dịch Bất Động Sản Cao Cấp",
+    "homeProjectsTitle": "CÁC DỰ ÁN TIÊU BIỂU CỦA CĐT HODECO & ĐỐI TÁC",
+    "brandName": "SI PROPERTY",
+    "metric1Value": "100%",
+    "vipCtaText": "Giỏ Hàng VIP",
+    "homeNewsBadge": "Báo Chí & Nhận Định Chuyên Gia",
+    "footerQuote": "“Chuyên tâm - Chuyên nghiệp - Chuyên sâu”",
+    "metric3Value": "65%",
+    "hotline": "0938.889.688",
+    "metric4Label": "Private Wealth Concierge",
+    "footerHodecoDesc": "Đồng hành chiến lược kiến tạo thịnh vượng cùng Công ty Cổ phần Phát triển Nhà Bà Rịa - Vũng Tàu.",
+    "heroTitleHighlight": "BẤT ĐỘNG SẢN CAO CẤP",
+    "homeProjectsBadge": "Giỏ Hàng Độc Quyền Phân Phối",
+    "heroBgImage": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80"
+  },
+  "news": [
+    {
+      "title": "SI Property: Tái định hình chuẩn mực môi giới từ tư duy nhà phát triển dự án",
+      "category": "Báo chí",
+      "content": "Trong bối cảnh thị trường bất động sản bước vào chu kỳ thanh lọc mạnh mẽ, nhà đầu tư và người mua an cư ngày càng khắt khe hơn đối với năng lực của đơn vị môi giới. Nhận thức sâu sắc thách thức này, SI Property (siproperty.vn) đã xác lập hướng đi đột phá: tái định hình chuẩn mực môi giới từ tư duy của nhà phát triển dự án.\n\nThay vì tiếp cận theo phương thức tư vấn thuần túy, đội ngũ SI Property đồng hành với khách hàng như một chuyên gia tài chính và cố vấn xây dựng. Mỗi sản phẩm được đưa vào giỏ hàng phân phối đều phải vượt qua bộ lọc thẩm định 3 lớp: cơ sở pháp lý hoàn chỉnh (quy hoạch 1/500, giấy phép xây dựng), tiềm năng kết nối hạ tầng thực tế trong bán kính 5-10km, và khả năng tạo lập dòng tiền sinh lời bền vững.\n\nĐặc biệt, sự hợp tác chiến lược giữa SI Property và Chủ đầu tư HODECO (Công ty Cổ phần Phát triển Nhà Bà Rịa - Vũng Tàu) với đại dự án The Light City cùng các phân khu nghỉ dưỡng cao cấp như Blanca, Legacy 66 đã củng cố vị thế tiên phong của SI Property trên bản đồ bất động sản ven biển phía Nam.",
+      "id": "news-cafeland-149918",
+      "author": "CafeLand.vn",
+      "badge": "Tiêu điểm Báo Chí",
+      "sourceUrl": "https://cafeland.vn/tin-tuc/si-property-tai-dinh-hinh-chuan-muc-moi-gioi-tu-tu-duy-nha-phat-trien-du-an-149918.html",
+      "summary": "Giữa bối cảnh thị trường bất động sản bước vào chu kỳ thanh lọc mạnh mẽ, SI Property định hình lối đi riêng với triết lý: chuyên viên phải am hiểu quy hoạch, giải phóng mặt bằng và giá trị sử dụng thực chất.",
+      "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
+      "date": "2025-05-18",
+      "readTime": "5 phút đọc"
+    },
+    {
+      "title": "The Light City Vũng Tàu: Động lực bứt phá khi cao tốc Biên Hòa - Vũng Tàu sắp về đích",
+      "content": "Đại dự án The Light City do HODECO triển khai tại Phường 12, TP. Vũng Tàu đang trở thành tâm điểm chú ý của giới đầu tư địa ốc. Được quy hoạch trên quy mô 27.2 ha, dự án hội tụ đầy đủ các sản phẩm: nhà liên kế, biệt thự đơn lập, biệt thự song lập và shophouse thương mại sầm uất.\n\nCùng với trục động lực cao tốc Biên Hòa - Vũng Tàu và sân bay quốc tế Long Thành đang đẩy nhanh tiến độ, cự ly di chuyển từ TP.HCM về The Light City chỉ còn khoảng 60 phút. Điều này biến dự án thành \"Second Home\" chuẩn mực, vừa đáp ứng nhu cầu an cư cao cấp ven biển, vừa sở hữu tiềm năng tăng giá vượt trội theo từng cột mốc hạ tầng giao thông kết nối.",
+      "readTime": "6 phút đọc",
+      "badge": "Phân Tích Dự Án",
+      "category": "Dự án",
+      "author": "Ban Nghiên Cứu SI Property",
+      "id": "news-the-light-city-vungtau",
+      "sourceUrl": "",
+      "image": "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1200&q=80",
+      "summary": "The Light City được quy hoạch 27.2 ha tại Phường 12, TP. Vũng Tàu do CĐT HODECO phát triển. Tiến độ hạ tầng cao tốc đang biến nơi đây thành thỏi nam châm dòng vốn đô thị biển.",
+      "date": "2025-07-12"
+    },
+    {
+      "date": "2025-08-04",
+      "summary": "Sự kết hợp tinh tế giữa gam màu trắng ngà, vòm cong mềm mại và biển xanh ngút ngàn tại Blanca tạo nên phong cách sống xa hoa, biệt lập cho chủ nhân thượng lưu.",
+      "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80",
+      "id": "news-blanca-luxury",
+      "sourceUrl": "",
+      "readTime": "4 phút đọc",
+      "author": "Ban Sáng Tạo & Thiết Kế",
+      "badge": "Kiến Trúc & Đẳng Cấp",
+      "content": "Khác biệt hoàn toàn với lối thiết kế đô thị truyền thống, dự án dinh thự biển Blanca mang hơi thở phóng khoáng của vùng bờ biển Amalfi và Riviera Địa Trung Hải. Với số lượng giới hạn và mật độ xây dựng thấp, mỗi tư dinh tại Blanca được bao bọc bởi vườn nhiệt đới, hồ bơi điện phân muối khoáng và tầm nhìn trực diện đại dương.\n\nSI Property phân phối Blanca với quy chuẩn bàn giao cao cấp, cam kết đồng hành cùng các đơn vị quản lý dịch vụ quản gia 24/7, mang đến trải nghiệm sống như tại những resort hàng đầu thế giới.",
+      "category": "Dự án",
+      "title": "Kiến trúc Địa Trung Hải tại Blanca: Khi chuẩn mực nghỉ dưỡng tư gia lên ngôi"
+    },
+    {
+      "category": "Cẩm nang đầu tư",
+      "date": "2025-09-02",
+      "badge": "Cẩm Nang Thực Chiến",
+      "sourceUrl": "",
+      "summary": "Hiểu rõ quy hoạch 1/500, giấy chứng nhận quyền sử dụng đất, giấy phép xây dựng và nghiệm thu hạ tầng là chìa khóa để bảo vệ 100% tài sản của bạn.",
+      "title": "Cẩm nang thẩm định pháp lý dự án BĐS cao cấp: 5 yếu tố \"vàng\" nhà đầu tư cần biết",
+      "author": "Phạm Quốc Tuấn (Trưởng Phòng Pháp Lý)",
+      "image": "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=1200&q=80",
+      "id": "news-phap-ly-vang",
+      "content": "Trong bất động sản, pháp lý không đơn thuần là thủ tục hành chính mà là lá chắn bảo vệ an toàn cho toàn bộ tài sản của khách hàng. Tại SI Property, chúng tôi áp dụng quy trình kiểm định 5 bước nghiêm ngặt:\n1. Kiểm tra quyết định phê duyệt quy hoạch chi tiết tỷ lệ 1/500.\n2. Kiểm tra nghĩa vụ tài chính và tiền sử dụng đất đã nộp đủ vào ngân sách nhà nước.\n3. Xác minh giấy phép xây dựng và thiết kế kỹ thuật được cơ quan có thẩm quyền phê duyệt.\n4. Kiểm tra văn bản đủ điều kiện bán nhà ở hình thành trong tương lai của Sở Xây dựng.\n5. Kiểm tra thỏa thuận bảo lãnh bàn giao nhà ở của ngân hàng thương mại uy tín.\n\nKhi một dự án đáp ứng đầy đủ 5 tiêu chí này, nhà đầu tư hoàn toàn có thể yên tâm về tiến độ cấp sổ hồng và khả năng thanh khoản lâu dài.",
+      "readTime": "8 phút đọc"
+    }
+  ]
+}

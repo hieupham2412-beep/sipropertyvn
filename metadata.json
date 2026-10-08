@@ -1,0 +1,8 @@
+{
+  "name": "SI Property | Sàn Giao Dịch Bất Động Sản Cao Cấp",
+  "description": "SI Property (siproperty.vn) - Tái định hình chuẩn mực môi giới bất động sản cao cấp. Phân phối độc quyền The Light City, Blanca, Legacy 66, The Collection 688, Green Skyline.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

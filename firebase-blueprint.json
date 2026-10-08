@@ -1,0 +1,87 @@
+{
+  "entities": {
+    "SiteData": {
+      "title": "SiteData",
+      "description": "Dữ liệu cấu hình và nội dung toàn diện của website SI Property",
+      "type": "object",
+      "properties": {
+        "updatedAt": {
+          "type": "string",
+          "description": "Thời điểm cập nhật mới nhất ISO"
+        },
+        "projects": {
+          "type": "array",
+          "description": "Danh sách dự án bất động sản"
+        },
+        "advisors": {
+          "type": "array",
+          "description": "Danh sách chuyên viên tư vấn đầu tư"
+        },
+        "news": {
+          "type": "array",
+          "description": "Danh sách bài viết tin tức và thị trường"
+        },
+        "careers": {
+          "type": "object",
+          "description": "Nội dung trang tuyển dụng và danh sách vị trí tuyển dụng"
+        },
+        "about": {
+          "type": "object",
+          "description": "Nội dung giới thiệu doanh nghiệp và các bài viết báo chí"
+        },
+        "contact": {
+          "type": "object",
+          "description": "Nội dung liên hệ, địa chỉ trụ sở và câu hỏi thường gặp"
+        },
+        "general": {
+          "type": "object",
+          "description": "Cài đặt chung, logo, hotline, banner, chỉ số và footer"
+        },
+        "pageHeaders": {
+          "type": "object",
+          "description": "Tiêu đề và phụ đề banner các trang con"
+        }
+      },
+      "required": ["updatedAt"]
+    },
+    "ContactInquiry": {
+      "title": "ContactInquiry",
+      "description": "Thông tin liên hệ tư vấn bất động sản từ khách hàng",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "fullName": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "projectInterest": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        }
+      },
+      "required": ["fullName", "phone", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/site_content/{documentId}": {
+      "schema": "SiteData",
+      "description": "Tài liệu lưu trữ nội dung toàn diện website"
+    },
+    "/inquiries/{inquiryId}": {
+      "schema": "ContactInquiry",
+      "description": "Thông tin khách hàng gửi yêu cầu tư vấn"
+    }
+  }
+}
