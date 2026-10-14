@@ -4,40 +4,66 @@ import {
   loadSiteDataFromFirestore,
   saveSiteDataToFirestore,
   subscribeToSiteData,
+  checkFirestoreConnection,
+  firestoreDbId,
 } from './firebase';
 
 const LOCAL_STORAGE_KEY = 'si_property_full_site_data_v2';
 
+/**
+ * Fetch the latest site data
+ * Priority:
+ * 1. Cloud Firestore (The central source of truth for all users across Netlify, custom domain, and devices)
+ * 2. Local storage cache (If device is offline)
+ * 3. Local server /api/site-data (If running inside a Node.js container)
+ * 4. INITIAL_SITE_DATA fallback
+ */
 export async function fetchSiteData(): Promise<SiteData> {
-  // 1. Read existing local data as fast fallback
+  // 1. Fetch from Cloud Firestore (Direct Google Cloud source of truth)
+  try {
+    const cloudData = await loadSiteDataFromFirestore();
+    if (cloudData && Array.isArray(cloudData.projects) && cloudData.projects.length > 0) {
+      // Cache to localStorage for fast 0ms offline rendering
+      try {
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(cloudData));
+      } catch (e) {
+        console.warn('Could not cache to localStorage', e);
+      }
+      return cloudData;
+    }
+  } catch (err) {
+    console.warn('[SiteData] Firestore read fallback triggered:', err);
+  }
+
+  // 2. Read local cache as offline fallback
   let localData: SiteData | null = null;
   try {
     const local = localStorage.getItem(LOCAL_STORAGE_KEY);
     if (local) {
       const parsed = JSON.parse(local);
-      if (parsed && parsed.projects) {
+      if (parsed && Array.isArray(parsed.projects) && parsed.projects.length > 0) {
         localData = parsed;
       }
     }
   } catch (e) {
-    console.error('Error reading localStorage', e);
+    console.warn('Error reading localStorage', e);
   }
 
-  // 2. Fetch server container data (Primary server file storage)
+  // 3. Optional local express server file fallback
   let serverData: SiteData | null = null;
   try {
     const res = await fetch('/api/site-data');
     if (res.ok) {
       const json = await res.json();
-      if (json && json.data && json.data.projects) {
+      if (json && json.data && Array.isArray(json.data.projects)) {
         serverData = json.data;
       }
     }
-  } catch (err) {
-    console.warn('API /api/site-data not accessible', err);
+  } catch {
+    // Expected on static hosting like Netlify
   }
 
-  // Determine the newest version between local and server sources
+  // Pick the newest between local and server if Firestore was unavailable
   const candidates: { source: string; data: SiteData; time: number }[] = [];
   if (localData && localData.projects) {
     candidates.push({
@@ -55,76 +81,165 @@ export async function fetchSiteData(): Promise<SiteData> {
   }
 
   if (candidates.length > 0) {
-    // Sort descending by timestamp: index 0 is newest
     candidates.sort((a, b) => b.time - a.time);
     const newest = candidates[0].data;
-
-    // Cache newest to localStorage
-    try {
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newest));
-    } catch (e) {
-      console.warn('Could not cache to localStorage', e);
-    }
-
-    // If local was newer than Server, propagate forward to server
-    if (candidates[0].source !== 'server' && newest) {
-      fetch('/api/site-data', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ data: newest }),
-      }).catch(() => {});
-    }
-
+    // Attempt background sync to Firestore so cloud recovers
+    saveSiteDataToFirestore(newest).catch(() => {});
     return newest;
   }
 
-  // 3. Fallback to Initial Data
+  // 4. Default Seed Data
+  // Seed to Firestore in background
+  saveSiteDataToFirestore(INITIAL_SITE_DATA).catch(() => {});
   return INITIAL_SITE_DATA;
 }
 
+/**
+ * Save updated site data permanently (Cloud Firestore + Local Cache + Optional Server File)
+ */
 export async function saveSiteDataToServer(
   data: SiteData
-): Promise<{ success: boolean; message: string; updatedAt: string }> {
+): Promise<{ success: boolean; message: string; updatedAt: string; firestoreSaved: boolean }> {
   const stampedData: SiteData = {
     ...data,
     updatedAt: new Date().toISOString(),
   };
 
-  // Layer 1: Always update local cache immediately (0ms)
+  // 1. Save to Local Cache (immediate 0ms responsiveness on this browser)
   try {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(stampedData));
   } catch (e) {
     console.warn('Failed saving to localStorage', e);
   }
 
-  // Layer 2: Send to Express backend file (Direct server persistence)
-  let serverSaved = false;
-  try {
-    const res = await fetch('/api/site-data', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ data: stampedData }),
-    });
-    if (res.ok) {
-      serverSaved = true;
-    }
-  } catch (err) {
-    console.warn('Server file backup warning:', err);
+  // 2. SAVE TO GOOGLE CLOUD FIRESTORE (Permanent multi-device storage)
+  const firestoreResult = await saveSiteDataToFirestore(stampedData);
+
+  // 3. Optional backup to local Express server file (if available)
+  fetch('/api/site-data', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ data: stampedData }),
+  }).catch(() => {});
+
+  if (firestoreResult.success) {
+    return {
+      success: true,
+      firestoreSaved: true,
+      message: '✅ Đã lưu vĩnh viễn lên Cloud Firestore! Toàn bộ người dùng trên Netlify và tên miền sẽ thấy dữ liệu mới ngay lập tức.',
+      updatedAt: stampedData.updatedAt,
+    };
+  } else {
+    return {
+      success: true, // Saved locally at least
+      firestoreSaved: false,
+      message: `⚠️ Đã lưu trên trình duyệt, nhưng kết nối Firestore gặp sự cố: ${firestoreResult.message}`,
+      updatedAt: stampedData.updatedAt,
+    };
   }
+}
 
-  // Layer 3: Optional soft Firestore sync (quiet background, non-blocking)
-  saveSiteDataToFirestore(stampedData).catch(() => {});
+/**
+ * Import and permanently save data from a JSON object or string
+ */
+export async function importSiteDataFromJSON(
+  rawJson: string | object
+): Promise<{
+  success: boolean;
+  message: string;
+  data?: SiteData;
+  stats?: { projects: number; advisors: number; news: number };
+}> {
+  try {
+    let parsed: any = typeof rawJson === 'string' ? JSON.parse(rawJson) : rawJson;
 
-  const successMessage = serverSaved
-    ? 'Đã lưu vĩnh viễn lên máy chủ website thành công (Hệ thống độc lập, không cần Google Cloud)!'
-    : 'Đã lưu thành công vào trình duyệt!';
+    // Check if the JSON is wrapped inside a data envelope e.g. { data: { ... } }
+    if (parsed && parsed.data && (parsed.data.projects || parsed.data.advisors)) {
+      parsed = parsed.data;
+    }
+
+    if (!parsed || typeof parsed !== 'object') {
+      return { success: false, message: 'Dữ liệu JSON không hợp lệ.' };
+    }
+
+    // Validate that it has at least one essential collection
+    const hasProjects = Array.isArray(parsed.projects) && parsed.projects.length > 0;
+    const hasAdvisors = Array.isArray(parsed.advisors) && parsed.advisors.length > 0;
+    const hasNews = Array.isArray(parsed.news) && parsed.news.length > 0;
+
+    if (!hasProjects && !hasAdvisors && !hasNews) {
+      return {
+        success: false,
+        message: 'Tệp JSON không chứa danh sách dự án, chuyên viên hoặc tin tức hợp lệ của SI Property.',
+      };
+    }
+
+    // Merge with INITIAL_SITE_DATA to ensure no missing object keys
+    const completeSiteData: SiteData = {
+      projects: Array.isArray(parsed.projects) ? parsed.projects : INITIAL_SITE_DATA.projects,
+      advisors: Array.isArray(parsed.advisors) ? parsed.advisors : INITIAL_SITE_DATA.advisors,
+      news: Array.isArray(parsed.news) ? parsed.news : INITIAL_SITE_DATA.news,
+      careers: parsed.careers || INITIAL_SITE_DATA.careers,
+      about: parsed.about || INITIAL_SITE_DATA.about,
+      contact: parsed.contact || INITIAL_SITE_DATA.contact,
+      general: parsed.general || INITIAL_SITE_DATA.general,
+      pageHeaders: parsed.pageHeaders || INITIAL_SITE_DATA.pageHeaders,
+      customerInquiries: Array.isArray(parsed.customerInquiries)
+        ? parsed.customerInquiries
+        : INITIAL_SITE_DATA.customerInquiries || [],
+      updatedAt: new Date().toISOString(),
+    };
+
+    // Save permanently to Cloud Firestore
+    const saveRes = await saveSiteDataToServer(completeSiteData);
+
+    const stats = {
+      projects: completeSiteData.projects.length,
+      advisors: completeSiteData.advisors.length,
+      news: completeSiteData.news.length,
+    };
+
+    if (saveRes.firestoreSaved) {
+      return {
+        success: true,
+        data: completeSiteData,
+        stats,
+        message: `✅ Đã nạp và lưu vĩnh viễn lên Cloud Firestore: ${stats.projects} dự án, ${stats.advisors} chuyên viên, ${stats.news} tin tức!`,
+      };
+    } else {
+      return {
+        success: true,
+        data: completeSiteData,
+        stats,
+        message: `⚠️ Đã nạp dữ liệu vào trình duyệt (${stats.projects} dự án, ${stats.advisors} chuyên viên), nhưng chưa đồng bộ được lên Cloud.`,
+      };
+    }
+  } catch (err: any) {
+    return {
+      success: false,
+      message: 'Lỗi đọc tệp JSON: ' + (err?.message || 'Cấu trúc file không đúng'),
+    };
+  }
+}
+
+/**
+ * Check cloud sync status live against Google Cloud Firestore
+ */
+export async function checkCloudSyncStatus() {
+  const cloudInfo = await checkFirestoreConnection();
+  let localUpdatedAt: string | null = null;
+  try {
+    const local = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (local) {
+      const p = JSON.parse(local);
+      localUpdatedAt = p?.updatedAt || null;
+    }
+  } catch {}
 
   return {
-    success: true,
-    message: successMessage,
-    updatedAt: stampedData.updatedAt,
+    ...cloudInfo,
+    localUpdatedAt,
+    databaseId: firestoreDbId,
   };
 }
 
@@ -132,13 +247,9 @@ export async function resetSiteDataToServer(): Promise<{ success: boolean; data:
   try {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(INITIAL_SITE_DATA));
     await saveSiteDataToFirestore(INITIAL_SITE_DATA);
-    const res = await fetch('/api/reset-site-data', { method: 'POST' });
-    if (res.ok) {
-      const result = await res.json();
-      return { success: true, data: result.data || INITIAL_SITE_DATA };
-    }
+    fetch('/api/reset-site-data', { method: 'POST' }).catch(() => {});
   } catch (err) {
-    console.warn('Error resetting on server', err);
+    console.warn('Error resetting site data', err);
   }
   return { success: true, data: INITIAL_SITE_DATA };
 }

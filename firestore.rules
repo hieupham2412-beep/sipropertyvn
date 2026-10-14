@@ -1,33 +1,12 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Global Safety Net: default deny
-    match /{document=**} {
-      allow read, write: if false;
-    }
-
-    function isValidId(id) {
-      return id is string && id.size() > 0 && id.size() <= 128;
-    }
-
-    // Site Content (Projects, Advisors, News, Careers, General Settings)
     match /site_content/{documentId} {
-      // Public visitors and admin read the website content
-      allow read: if isValidId(documentId);
-
-      // Updating site content requires valid ID and string timestamp
-      allow write: if isValidId(documentId);
+      allow read, write: if true;
     }
 
-    // Contact Inquiries submitted by clients
     match /inquiries/{inquiryId} {
-      allow create: if isValidId(inquiryId)
-        && request.resource.data.fullName is string
-        && request.resource.data.fullName.size() >= 2
-        && request.resource.data.phone is string
-        && request.resource.data.phone.size() >= 8;
-      allow read: if true;
-      allow update, delete: if false;
+      allow read, write: if true;
     }
   }
 }

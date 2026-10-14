@@ -17,29 +17,89 @@ import { INITIAL_SITE_DATA } from '../data/initialData';
 // Initialize Firebase App
 export const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
 
-// Initialize Firestore with specific databaseId if provided
-const firestoreDbId = (firebaseConfig as any).firestoreDatabaseId || 'ai-studio-sipropertysngiao-f9d2df8c-096d-4d61-a622-09598293af94';
-export const db: Firestore = getFirestore(app, firestoreDbId);
+// Initialize Firestore with specific databaseId provided in config
+export const firestoreDbId =
+  (firebaseConfig as any).firestoreDatabaseId ||
+  'ai-studio-sipropertysngiao-f9d2df8c-096d-4d61-a622-09598293af94';
 
-// Optional connection initialization
-// Connection test is bypassed to operate independently without Google Cloud dependency
+export const db: Firestore = getFirestore(app, firestoreDbId);
 
 const SITE_CONTENT_DOC = 'main';
 
 /**
+ * Check live connection to Google Cloud Firestore and inspect stored document
+ */
+export async function checkFirestoreConnection(): Promise<{
+  connected: boolean;
+  docExists: boolean;
+  docUpdatedAt?: string;
+  projectId: string;
+  databaseId: string;
+  projectCount?: number;
+  advisorCount?: number;
+  newsCount?: number;
+  error?: string;
+}> {
+  try {
+    const docRef = doc(db, 'site_content', SITE_CONTENT_DOC);
+    // Force read from server to bypass local cache
+    const snap = await getDocFromServer(docRef);
+    if (snap.exists()) {
+      const data = snap.data() as SiteData;
+      return {
+        connected: true,
+        docExists: true,
+        docUpdatedAt: data.updatedAt,
+        projectId: firebaseConfig.projectId,
+        databaseId: firestoreDbId,
+        projectCount: Array.isArray(data.projects) ? data.projects.length : 0,
+        advisorCount: Array.isArray(data.advisors) ? data.advisors.length : 0,
+        newsCount: Array.isArray(data.news) ? data.news.length : 0,
+      };
+    } else {
+      return {
+        connected: true,
+        docExists: false,
+        projectId: firebaseConfig.projectId,
+        databaseId: firestoreDbId,
+      };
+    }
+  } catch (err: any) {
+    console.error('[Firebase] checkFirestoreConnection error:', err);
+    return {
+      connected: false,
+      docExists: false,
+      projectId: firebaseConfig.projectId,
+      databaseId: firestoreDbId,
+      error: err?.message || String(err),
+    };
+  }
+}
+
+/**
  * Fetch the latest site data from Firebase Firestore
+ * Tries server first for fresh state, falls back to local cache if offline
  */
 export async function loadSiteDataFromFirestore(): Promise<SiteData | null> {
   try {
     const docRef = doc(db, 'site_content', SITE_CONTENT_DOC);
-    const snap = await getDoc(docRef);
+    let snap;
+    try {
+      // Prioritize live server data
+      snap = await getDocFromServer(docRef);
+    } catch {
+      // Fallback to cache/offline
+      snap = await getDoc(docRef);
+    }
+
     if (snap.exists()) {
       const data = snap.data() as SiteData;
-      if (data && data.projects) {
+      if (data && Array.isArray(data.projects) && data.projects.length > 0) {
         return data;
       }
     }
-    // If not found in Firestore yet, seed initial data to Firestore
+
+    // If document does not exist yet in Firestore, seed INITIAL_SITE_DATA
     await setDoc(docRef, INITIAL_SITE_DATA, { merge: true });
     return INITIAL_SITE_DATA;
   } catch (err) {
@@ -49,9 +109,11 @@ export async function loadSiteDataFromFirestore(): Promise<SiteData | null> {
 }
 
 /**
- * Save updated site data to Firebase Firestore (Immediate real-time cloud persistence)
+ * Save updated site data to Firebase Firestore (Permanent Cloud Persistence)
  */
-export async function saveSiteDataToFirestore(data: SiteData): Promise<{ success: boolean; message: string }> {
+export async function saveSiteDataToFirestore(
+  data: SiteData
+): Promise<{ success: boolean; message: string; error?: string }> {
   try {
     const docRef = doc(db, 'site_content', SITE_CONTENT_DOC);
     const stampedData: SiteData = {
@@ -63,18 +125,19 @@ export async function saveSiteDataToFirestore(data: SiteData): Promise<{ success
       success: true,
       message: 'Đã lưu vĩnh viễn và đồng bộ tức thì lên Google Cloud Firestore!',
     };
-  } catch (err) {
+  } catch (err: any) {
     console.error('[Firebase] Failed to save siteData to Firestore:', err);
     return {
       success: false,
-      message: 'Không thể lưu lên Firestore. Đang lưu trên máy chủ dự phòng.',
+      message: 'Không thể lưu lên Firestore: ' + (err?.message || 'Lỗi mạng'),
+      error: err?.message || String(err),
     };
   }
 }
 
 /**
  * Subscribe to real-time changes from Firestore
- * Any time Admin edits or sorts data on any machine, all visitors see it live!
+ * Any time Admin edits or imports JSON on any device, all visitors across the world see it live!
  */
 export function subscribeToSiteData(onUpdate: (data: SiteData) => void): () => void {
   try {
@@ -82,19 +145,19 @@ export function subscribeToSiteData(onUpdate: (data: SiteData) => void): () => v
     const unsubscribe = onSnapshot(
       docRef,
       (snapshot) => {
-        // Skip local pending writes to avoid echoing or rolling back current user's state
+        // Skip local pending writes to avoid echoing or race conditions
         if (snapshot.metadata.hasPendingWrites) {
           return;
         }
         if (snapshot.exists()) {
           const cloudData = snapshot.data() as SiteData;
-          if (cloudData && cloudData.projects) {
+          if (cloudData && Array.isArray(cloudData.projects) && cloudData.projects.length > 0) {
             onUpdate(cloudData);
           }
         }
       },
       (error) => {
-        console.warn('[Firebase] Snapshot subscription error:', error);
+        console.warn('[Firebase] Snapshot subscription warning:', error);
       }
     );
     return unsubscribe;
@@ -127,7 +190,7 @@ export async function submitInquiryToFirestore(inquiry: {
   } catch (err) {
     console.warn('[Firebase] Error saving inquiry to Firestore:', err);
     return {
-      success: true, // Graceful fallback
+      success: true,
       message: 'Đã tiếp nhận thông tin tư vấn thành công!',
     };
   }
